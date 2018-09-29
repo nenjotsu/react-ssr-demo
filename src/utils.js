@@ -3,8 +3,11 @@ import routesMap from './routesMap'
 
 export const isServer = typeof window === 'undefined'
 
+export const host =
+  process.env.NODE === 'production' ? '172.26.14.56' : 'localhost'
+
 export const fetchData = async (path, jwToken) =>
-  fetch(`http://localhost:3000${path}`, {
+  fetch(`http://${host}:3000${path}`, {
     headers: {
       Accept: 'application/json',
       Authorization: `Bearer ${jwToken || ''}`
